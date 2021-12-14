@@ -20,7 +20,7 @@ fn main() -> Result<(), Box<dyn Error + 'static + Send + Sync>> {
 
     let mut fuel_spent = Vec::new();
     for i in 0..**max_pos {
-        let fuel = crabs.iter().fold(0, |acc, &crab|  acc + (i-crab).abs() as u64 );
+        let fuel = crabs.iter().fold(0, |acc, &crab| { let x = (i-crab).abs() as u64; let sum = (x*(x+1))/2;  acc + sum });
         fuel_spent.push(fuel);
     }
 
